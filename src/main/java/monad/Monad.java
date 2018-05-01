@@ -1,3 +1,5 @@
+package monad;
+
 import java.util.function.Function;
 
 public interface Monad<T> {
