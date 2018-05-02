@@ -14,6 +14,8 @@ task wrapper(type: Wrapper) {
 }
 
 dependencies {
+    compile 'org.apache.commons:commons-lang3:3.7'
+
     testCompile('org.junit.jupiter:junit-jupiter-api:5.2.0')
     testRuntime('org.junit.jupiter:junit-jupiter-engine:5.2.0')
 }
