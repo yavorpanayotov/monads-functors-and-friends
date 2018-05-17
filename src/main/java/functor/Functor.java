@@ -4,32 +4,32 @@ import common.DataClass;
 
 import java.util.function.Function;
 
-public interface Functor<T> {
-    Functor<T> fmap(Function<T, T> f);
+public interface Functor<A> {
+    <B> Functor<B> fmap(Function<A, B> f);
 }
 
-abstract class Maybe<T> extends DataClass implements Functor<T> {
+abstract class Maybe<A> extends DataClass implements Functor<A> {
 }
 
-class Just<T> extends Maybe<T> {
+class Just<A> extends Maybe<A> {
 
-    private final T value;
+    private final A value;
 
-    Just(T value) {
+    Just(A value) {
         this.value = value;
     }
 
     @Override
-    public Functor<T> fmap(Function<T, T> f) {
+    public <B> Functor<B> fmap(Function<A, B> f) {
         return new Just(f.apply(value));
     }
 }
 
-class Nothing<T> extends Maybe<T> {
+class Nothing<A> extends Maybe<A> {
 
     @Override
-    public Functor<T> fmap(Function<T, T> f) {
-        return this;
+    public <B> Functor<B> fmap(Function<A, B> f) {
+        return new Nothing<>();
     }
 }
 
